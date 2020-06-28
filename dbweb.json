@@ -1,0 +1,176 @@
+{
+  "customer": [
+    {
+      "id": 1,
+      "fullName": "Admin Lê Trương",
+      "email": "lee@gmail.com",
+      "phone": "0967827807",
+      "address": "NestHome - 2 tỷ 3",
+      "total": 0
+    },
+    {
+      "fullName": "Lê cute",
+      "email": "lee@gmail.com",
+      "phone": "0334965080",
+      "address": "NestHome",
+      "total": 1200000,
+      "id": 2
+    },
+    {
+      "fullName": "soncut",
+      "email": "soncut",
+      "phone": "1256789232",
+      "address": "asd",
+      "total": 120000,
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "isAdmin": true
+    },
+    {
+      "username": "ledien",
+      "password": "aa",
+      "isAdmin": false,
+      "id": 2
+    },
+    {
+      "username": "lee",
+      "password": "1",
+      "isAdmin": false,
+      "id": 4
+    },
+    {
+      "username": "soncut",
+      "password": "1",
+      "isAdmin": false,
+      "id": 7
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big1.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    },
+    {
+      "id": 2,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big2.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    },
+    {
+      "id": 3,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big3.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    },
+    {
+      "id": 4,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big4.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    },
+    {
+      "id": 5,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big5.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    },
+    {
+      "id": 6,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big6.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    },
+    {
+      "id": 7,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big7.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    },
+    {
+      "id": 8,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big8.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    },
+    {
+      "id": 11,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big11.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    },
+    {
+      "id": 12,
+      "nameProduct": "Electria Ostma",
+      "size": "M",
+      "quantity": 12,
+      "price": 120000,
+      "image": "img-products/big12.jpg",
+      "property": true,
+      "hot": true,
+      "new": true,
+      "sale": false
+    }
+  ]
+}
