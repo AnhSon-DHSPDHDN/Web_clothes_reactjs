@@ -89,10 +89,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         registerUser: (user) => {
-            dispatch(addNewUserToAPI(user))
+            return dispatch(addNewUserToAPI(user))
         },
         getAllUsers: () => {
-            dispatch(getAllUsersAPI())
+            return dispatch(getAllUsersAPI())
         }
     }
 }

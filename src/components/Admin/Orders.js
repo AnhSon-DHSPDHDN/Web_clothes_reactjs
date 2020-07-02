@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class Orders extends Component {
 
     componentDidMount = () => {
-        this.props.getAllOrder()
+        return this.props.getAllOrder()
     }
 
     showAllOrders = () => {
@@ -22,7 +22,9 @@ class Orders extends Component {
                     <td>{order.address}</td>
                     <td>{order.total}</td>
                     <td>
-                        <button type="button" className="btn btn-success">Edit</button>
+                        <button type="button" className="btn btn-success"
+                            onClick={() => this.onEdit(order.id)}
+                        >Edit</button>
                         <button type="button" className="btn btn-primary"
                             onClick={() => this.onDelete(order.id)}
                         >Delete</button>
@@ -34,9 +36,11 @@ class Orders extends Component {
     }
 
     onDelete = (id) => {
-        this.props.deleteOrder(id)
+        return this.props.deleteOrder(id)
     }
-
+    onEdit = (id) => {
+        return this.props.history.push(`orders/edit/${id}`)
+    }
     render() {
         return (
             <div className="container">

@@ -46,6 +46,34 @@ export const actDeleteUserRequest = (id) => {
         })
     }
 }
+// Get user by Id
+export const actGetUserByID = (user) => {
+    return {
+        type: Types.GET_USER_BY_ID,
+        user: user
+    }
+}
+export const actGetUserByIDRequest = (id) => {
+    return dispatch => {
+        return callAPI(`users/${id}`, 'GET', null).then(res => {
+            return dispatch(actGetUserByID(res.data))
+        })
+    }
+}
+//Edit User
+export const actEditUser = (user) => {
+    return {
+        type: Types.EDIT_USER,
+        user: user
+    }
+}
+export const actEditUserRequest = (user, id) => {
+    return dispatch => {
+        return callAPI(`users/${id}`, 'PUT', user).then(res => {
+            return dispatch(actEditUser(res.data))
+        })
+    }
+}
 
 /** -----------------------------------------------------------PRODUCT------- */
 export const actGetAllProduct = (products) => {
@@ -59,6 +87,34 @@ export const actGetAllProductRequest = () => {
     return dispatch => {
         return callAPI('products', 'GET', null).then(res => {
             dispatch(actGetAllProduct(res.data))
+        })
+    }
+}
+// add product
+export const actAddProduct = (product) => {
+    return {
+        type: Types.ADD_PRODUCT,
+        product: product
+    }
+}
+export const actAddProductRequest = (product) => {
+    return dispatch => {
+        return callAPI('products', 'POST', product).then(res => {
+            return dispatch(actAddProduct(res.data))
+        })
+    }
+}
+// edit product
+export const actEditProduct = (product) => {
+    return {
+        type: Types.EDIT_PRODUCT,
+        product: product
+    }
+}
+export const actEditProductRequest = (product, id) => {
+    return dispatch => {
+        return callAPI(`products/${id}`, 'PUT', product).then(res => {
+            return dispatch(actEditProduct(res.data))
         })
     }
 }
@@ -88,7 +144,7 @@ export const actGetProductByID = (product) => {
 export const actGetProductByIDRequest = (id) => {
     return dispatch => {
         return callAPI(`products/${id}`, 'GET', null).then(res => {
-            dispatch(actGetProductByID(res.data))
+            return dispatch(actGetProductByID(res.data))
         })
     }
 }
@@ -158,6 +214,34 @@ export const actGetAllCustomerRequest = () => {
     return dispatch => {
         return callAPI('customer', 'GET', null).then(res => {
             dispatch(actGetAllCustomer(res.data))
+        })
+    }
+}
+// Get Customer by ID
+export const actGetCustomerByID = (customer) => {
+    return {
+        type: Types.GET_CUSTOMER_BY_ID,
+        customer: customer
+    }
+}
+export const actGetCustomerByIDRequest = (id) => {
+    return dispatch => {
+        return callAPI(`customer/${id}`, 'GET', null).then(res => {
+            return dispatch(actGetCustomerByID(res.data))
+        })
+    }
+}
+// edit Customer
+export const actEditCustomer = (customer) => {
+    return {
+        type: Types.EDIT_CUSTOMER,
+        customer: customer
+    }
+}
+export const actEditCustomerRequest = (customer, id) => {
+    return dispatch => {
+        return callAPI(`customer/${id}`, 'PUT', customer).then(res => {
+            return dispatch(actEditCustomer(res.data))
         })
     }
 }

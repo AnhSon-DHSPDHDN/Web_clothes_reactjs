@@ -8,7 +8,6 @@ class Men extends Component {
         return (
             <div>
                 <Navigation title={title} />
-                Men work
             </div>
         );
     }

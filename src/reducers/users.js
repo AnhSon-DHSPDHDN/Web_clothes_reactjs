@@ -20,6 +20,14 @@ const users = (state = initialState, action) => {
             }
             return [...state]
         }
+        case Types.GET_USER_BY_ID: {
+            state = action.user;
+            return state;
+        }
+        case Types.EDIT_USER: {
+            state = action.user;
+            return [state]
+        }
         default: return [...state];
     }
 }

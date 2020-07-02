@@ -8,7 +8,6 @@ class Shop extends Component {
         return (
             <div>
                 <Navigation title={title} />
-                Shop work
             </div>
         );
     }

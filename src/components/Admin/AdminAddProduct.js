@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import {
-    actGetProductByIDRequest,
-    actEditProductRequest
-} from '../../action/index';
-import { connect } from 'react-redux'
+import { actAddProductRequest } from '../../action/index';
+import { connect } from 'react-redux';
 
-class AdminEditProduct extends Component {
+class AdminAddProduct extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,49 +33,33 @@ class AdminEditProduct extends Component {
             [name]: value
         })
     }
-
-    componentDidMount = () => {
-        let id = this.props.match.params.id;
-        return this.props.getProductByID(id)
-    }
-
     onSubmit = async (e) => {
-        e.preventDefault()
-        let inputNameProduct = document.querySelector('#nameProduct');
-        let inputSize = document.querySelector('#size');
-        let inputQuantity = document.querySelector('#quantity');
-        let inputPrice = document.querySelector('#price');
-        let inputImage = document.querySelector('#image');
-        await this.setState({
-            nameProduct: inputNameProduct.value,
-            size: inputSize.value,
-            quantity: inputQuantity.value,
-            price: inputPrice.value,
-            image: inputImage.value
-        })
-        let id = await this.props.match.params.id;
-        let { nameProduct, size, quantity, price, image } = this.state
-        await this.props.editProduct({
-            nameProduct,
-            size,
-            quantity,
-            price,
-            image,
-            property: this.state.property,
-            hot: this.state.hot,
-            new: this.state.new,
-            sale: this.state.sale
-        }, id);
-        return this.props.history.push('/admin/products')
+        e.preventDefault();
+        let { nameProduct, size, quantity, price, image, property,
+            hot, news, sale } = this.state;
+        if (nameProduct && size && quantity && price && image) {
+            await this.props.addProduct({
+                nameProduct,
+                size,
+                quantity,
+                price,
+                image,
+                property,
+                hot,
+                news,
+                sale
+            })
+            await alert('Success');
+            return this.props.history.push('/admin/products')
+        }
+        return alert('Vui lòng điền đầy đủ thông tin')
     }
 
     render() {
-        let { nameProduct, size, quantity, price, image } = this.state;
-        let { product } = this.props
         return (
             <div>
                 <div className="container">
-                    <h4>Edit Product</h4>
+                    <h4>Add Product</h4>
 
                     <div className="row">
                         <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -87,12 +68,10 @@ class AdminEditProduct extends Component {
                                     <label>Name Product:</label>
                                     <input type="text"
                                         className="form-control"
-                                        id="nameProduct"
                                         placeholder="Name Product"
                                         required
                                         onChange={this.onChange}
                                         name="nameProduct"
-                                        value={nameProduct ? nameProduct : (product[0] ? product[0].nameProduct : '')}
                                     >
                                     </input>
                                 </div>
@@ -104,8 +83,6 @@ class AdminEditProduct extends Component {
                                         required
                                         onChange={this.onChange}
                                         name="size"
-                                        id="size"
-                                        value={size ? size : (product[0] ? product[0].size : '')}
                                     >
                                     </input>
                                 </div>
@@ -113,12 +90,10 @@ class AdminEditProduct extends Component {
                                     <label>Quantity:</label>
                                     <input type="number"
                                         className="form-control"
-                                        placeholder="Size"
+                                        placeholder="Quantity"
                                         required
                                         onChange={this.onChange}
                                         name="quantity"
-                                        id="quantity"
-                                        value={quantity ? quantity : (product[0] ? product[0].quantity : '')}
                                     >
                                     </input>
                                 </div>
@@ -130,8 +105,6 @@ class AdminEditProduct extends Component {
                                         required
                                         onChange={this.onChange}
                                         name="price"
-                                        id="price"
-                                        value={price ? price : (product[0] ? product[0].price : '')}
                                     >
                                     </input>
                                 </div>
@@ -143,8 +116,6 @@ class AdminEditProduct extends Component {
                                         required
                                         onChange={this.onChange}
                                         name="image"
-                                        id="image"
-                                        value={image ? image : (product[0] ? product[0].image : '')}
                                     >
                                     </input>
                                 </div>
@@ -155,7 +126,7 @@ class AdminEditProduct extends Component {
                                             <label>Property:</label>
                                             <input type="checkbox"
                                                 className="form-control"
-                                                onChange={this.onChange}
+                                                onClick={this.onClick}
                                                 name="property"
                                             >
                                             </input>
@@ -164,7 +135,7 @@ class AdminEditProduct extends Component {
                                             <label>Hot:</label>
                                             <input type="checkbox"
                                                 className="form-control"
-                                                onChange={this.onChange}
+                                                onClick={this.onClick}
                                                 name="hot"
                                             >
                                             </input>
@@ -173,7 +144,7 @@ class AdminEditProduct extends Component {
                                             <label>New:</label>
                                             <input type="checkbox"
                                                 className="form-control"
-                                                onChange={this.onChange}
+                                                onClick={this.onClick}
                                                 name="new"
                                             >
                                             </input>
@@ -182,7 +153,7 @@ class AdminEditProduct extends Component {
                                             <label>Sale:</label>
                                             <input type="checkbox"
                                                 className="form-control"
-                                                onChange={this.onChange}
+                                                onClick={this.onClick}
                                                 name="sale"
                                             >
                                             </input>
@@ -210,13 +181,10 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        getProductByID: (id) => {
-            return dispatch(actGetProductByIDRequest(id))
-        },
-        editProduct: (product, id) => {
-            return dispatch(actEditProductRequest(product, id))
+        addProduct: (product) => {
+            return dispatch(actAddProductRequest(product))
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminEditProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminAddProduct);

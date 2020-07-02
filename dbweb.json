@@ -9,19 +9,19 @@
       "total": 0
     },
     {
-      "fullName": "Lê cute",
+      "address": "NestHome- Chu huy man",
       "email": "lee@gmail.com",
+      "fullName": "Lê cute",
       "phone": "0334965080",
-      "address": "NestHome",
-      "total": 1200000,
+      "total": "1200000",
       "id": 2
     },
     {
-      "fullName": "soncut",
-      "email": "soncut",
-      "phone": "1256789232",
       "address": "asd",
-      "total": 120000,
+      "email": "soncut",
+      "fullName": "soncut",
+      "phone": "1256789232",
+      "total": "120000",
       "id": 5
     }
   ],
@@ -39,30 +39,36 @@
       "id": 2
     },
     {
-      "username": "lee",
-      "password": "1",
-      "isAdmin": false,
-      "id": 4
-    },
-    {
       "username": "soncut",
       "password": "1",
       "isAdmin": false,
       "id": 7
+    },
+    {
+      "username": "lelele",
+      "password": "1",
+      "isAdmin": false,
+      "id": 8
+    },
+    {
+      "username": "aaaaaaa",
+      "password": "1",
+      "isAdmin": false,
+      "id": 9
     }
   ],
   "products": [
     {
-      "id": 1,
       "nameProduct": "Electria Ostma",
       "size": "M",
-      "quantity": 12,
-      "price": 120000,
+      "quantity": "12",
+      "price": "120000",
       "image": "img-products/big1.jpg",
-      "property": true,
-      "hot": true,
-      "new": true,
-      "sale": false
+      "property": false,
+      "hot": "on",
+      "new": "on",
+      "sale": false,
+      "id": 1
     },
     {
       "id": 2,
@@ -171,6 +177,17 @@
       "hot": true,
       "new": true,
       "sale": false
+    },
+    {
+      "nameProduct": "Testq2",
+      "size": "21",
+      "quantity": "12",
+      "price": "123",
+      "image": "asd",
+      "property": false,
+      "hot": false,
+      "sale": true,
+      "id": 14
     }
   ]
 }

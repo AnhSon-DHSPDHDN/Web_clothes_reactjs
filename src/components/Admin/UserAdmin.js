@@ -20,7 +20,9 @@ class UserAdmin extends Component {
                     <td>{user.password}</td>
                     <td>{user.isAdmin.toString()}</td>
                     <td>
-                        <button type="button" className="btn btn-success">Edit</button>
+                        <button type="button" className="btn btn-success"
+                            onClick={() => this.onEdit(user.id)}
+                        >Edit</button>
                         <button type="button" className="btn btn-primary"
                             onClick={() => this.onDelete(user.id)}
                         >Delete</button>
@@ -29,6 +31,13 @@ class UserAdmin extends Component {
             })
         }
         return result
+    }
+
+    onEdit = (id) => {
+        if (id === 1) {
+            return alert('Can not edit Admin');
+        }
+        return this.props.history.push(`users/edit/${id}`)
     }
 
     onDelete = (id) => {

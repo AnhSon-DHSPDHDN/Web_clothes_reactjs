@@ -21,7 +21,9 @@ class ProductsAdmin extends Component {
                     <td>{product.quantity}</td>
                     <td>{product.price}</td>
                     <td>
-                        <button type="button" className="btn btn-success">Edit</button>
+                        <button type="button" className="btn btn-success"
+                            onClick={() => this.onEdit(product.id)}
+                        >Edit</button>
                         <button type="button" className="btn btn-primary"
                             onClick={() => this.onDelete(product.id)}
                         >Delete</button>
@@ -32,8 +34,16 @@ class ProductsAdmin extends Component {
         return result;
     }
 
+    onEdit = (id) => {
+        return this.props.history.push(`products/edit/${id}`)
+    }
+
     onDelete = async (id) => {
         this.props.deleteProduct(id)
+    }
+
+    onAddProduct = () => {
+        return this.props.history.push('products/add')
     }
 
     render() {
@@ -45,7 +55,9 @@ class ProductsAdmin extends Component {
                         <h3 className="panel-title">Products Manager</h3>
                     </div>
                     <div className="panel-body">
-                        <button type="button" className="btn btn-warning">Add Product</button>
+                        <button type="button" className="btn btn-warning"
+                            onClick={this.onAddProduct}
+                        >Add Product</button>
                         <table className="table table-bordered table-hover">
                             <thead>
                                 <tr>

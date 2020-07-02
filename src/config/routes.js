@@ -97,6 +97,11 @@ const routes = [
         exact: true
     },
     {
+        path: '/admin/products/add',
+        component: React.lazy(() => import(`../components/Admin/AdminAddProduct`)),
+        exact: true
+    },
+    {
         path: '/admin/orders/edit/:id',
         component: React.lazy(() => import(`../components/Admin/AdminEditOrder`)),
         exact: true

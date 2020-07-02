@@ -1,7 +1,61 @@
 import React, { Component } from 'react';
+import { actGetCustomerByIDRequest, actEditCustomerRequest } from '../../action/index';
+import { connect } from 'react-redux';
 
 class AdminEditOrder extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            address: null,
+            email: null,
+            fullName: null,
+            phone: null,
+            total: null
+        }
+    }
+
+    componentDidMount = () => {
+        let id = this.props.match.params.id;
+        return this.props.getCustomerByID(id)
+    }
+
+    onChange = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        return this.setState({
+            [name]: value
+        })
+    }
+
+    onSubmit = async (e) => {
+        e.preventDefault()
+        let inputAddress = document.querySelector('#address');
+        let inputEmail = document.querySelector('#email');
+        let inputFullName = document.querySelector('#fullName');
+        let inputPhone = document.querySelector('#phone');
+        let inputTotal = document.querySelector('#total');
+        await this.setState({
+            address: inputAddress.value,
+            email: inputEmail.value,
+            fullName: inputFullName.value,
+            phone: inputPhone.value,
+            total: inputTotal.value
+        })
+        let id = this.props.match.params.id;
+        let { address, email, fullName, phone, total } = this.state;
+        await this.props.editCustomer({
+            address,
+            email,
+            fullName,
+            phone,
+            total
+        }, id)
+        return this.props.history.push('/admin/orders')
+    }
+
     render() {
+        let { address, email, fullName, total, phone } = this.state;
+        let { customer } = this.props
         return (
             <div className="container">
                 <h4>Edit Orders</h4>
@@ -17,6 +71,8 @@ class AdminEditOrder extends Component {
                                     required
                                     onChange={this.onChange}
                                     name="fullName"
+                                    id="fullName"
+                                    value={fullName ? fullName : (customer ? customer.fullName : '')}
                                 >
                                 </input>
                             </div>
@@ -28,6 +84,8 @@ class AdminEditOrder extends Component {
                                     required
                                     onChange={this.onChange}
                                     name="email"
+                                    id="email"
+                                    value={email ? email : (customer ? customer.email : '')}
                                 >
                                 </input>
                             </div>
@@ -39,6 +97,8 @@ class AdminEditOrder extends Component {
                                     required
                                     onChange={this.onChange}
                                     name="phone"
+                                    id="phone"
+                                    value={phone ? phone : (customer ? customer.phone : '')}
                                 >
                                 </input>
                             </div>
@@ -50,6 +110,8 @@ class AdminEditOrder extends Component {
                                     required
                                     onChange={this.onChange}
                                     name="address"
+                                    id="address"
+                                    value={address ? address : (customer ? customer.address : '')}
                                 >
                                 </input>
                             </div>
@@ -61,6 +123,8 @@ class AdminEditOrder extends Component {
                                     required
                                     onChange={this.onChange}
                                     name="total"
+                                    id="total"
+                                    value={total ? total : (customer ? customer.total : '')}
                                 >
                                 </input>
                             </div>
@@ -77,4 +141,20 @@ class AdminEditOrder extends Component {
     }
 }
 
-export default AdminEditOrder;
+const mapStateToProps = (state) => {
+    return {
+        customer: state.customer
+    }
+}
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        getCustomerByID: id => {
+            return dispatch(actGetCustomerByIDRequest(id))
+        },
+        editCustomer: (customer, id) => {
+            return dispatch(actEditCustomerRequest(customer, id))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminEditOrder);

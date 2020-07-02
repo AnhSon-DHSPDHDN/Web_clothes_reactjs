@@ -20,6 +20,14 @@ const products = (state = initialState, action) => {
             }
             return [...state]
         }
+        case Types.ADD_PRODUCT: {
+            state.push(action.product);
+            return [...state]
+        }
+        case Types.EDIT_PRODUCT: {
+            state = action.product;
+            return state
+        }
         default: return [...state]
     }
 }

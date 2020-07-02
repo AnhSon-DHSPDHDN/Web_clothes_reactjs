@@ -20,6 +20,14 @@ const customer = (state = initialState, action) => {
             }
             return [...state]
         }
+        case Types.GET_CUSTOMER_BY_ID: {
+            state = action.customer;
+            return state;
+        }
+        case Types.EDIT_CUSTOMER: {
+            state = action.customer;
+            return [state]
+        }
         default: return [...state];
     }
 }
